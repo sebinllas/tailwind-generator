@@ -40,7 +40,7 @@ export function Board({ children, backgroundImagesUrl }: Props) {
             setDark(checked);
           }}
         />
-        <div className='flex gap-3 z-0'>
+        <div className='z-20 flex gap-3'>
           {bgImages.map((imgUrl, index) => (
             <div
               className='w-16 h-16 rounded-lg bg-gray-950 bg-[length:300px_300px]
