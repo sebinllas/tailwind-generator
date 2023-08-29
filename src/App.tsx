@@ -20,7 +20,7 @@ export default function App() {
       className='flex h-[100vh] border divide-x rounded-xl
       border-slate-700 divide-slate-700 flex-wrap'
     >
-      <aside className='grow shrink-0'>
+      <aside className='grow sm:grow-0 shrink-0'>
         <ShadowForm
           onChange={(s) => {
             setShadow(s);

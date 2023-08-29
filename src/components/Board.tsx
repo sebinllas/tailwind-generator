@@ -1,10 +1,6 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-// eslint-disable jsx-a11y/click-events-have-key-events
-// eslint-disable jsx-a11y/click-events-have-key-events
-// eslint-disable jsx-a11y/no-static-element-interactions
 import { ReactNode, useState } from 'react';
 import { Toggle } from './Toggle';
+import { BackgroundPreview } from './BackgroundPreview';
 
 type Props = {
   children: ReactNode;
@@ -17,7 +13,7 @@ export function Board({ children, backgroundImagesUrl }: Props) {
   const bgImages = backgroundImagesUrl;
   return (
     <div
-      className='flex relative justify-center items-center min-h-[24rem] grow bg-gray-950'
+      className='flex relative justify-center items-center min-h-[24rem] grow bg-gray-950 flex-col'
       style={{
         backgroundImage:
           bgImageIndex || bgImageIndex === 0
@@ -25,38 +21,39 @@ export function Board({ children, backgroundImagesUrl }: Props) {
             : 'none',
       }}
     >
-      <div className='z-20'>{children}</div>
+      <div className='z-20 grow flex justify-center items-center'>
+        {children}
+      </div>
       <div
-        className='absolute top-0 left-0 w-full h-full z-10'
+        className={`absolute top-0 left-0 w-full h-full z-10 ${
+          dark ? 'backdrop-invert-[0.9]' : ''
+        }`}
         style={{
-          backdropFilter: dark ? 'none' : 'invert(0.9)',
-          WebkitTransition: 'backdrop-filter 500ms ease-in-out',
+          transition: 'backdrop-filter 500ms ease-in-out',
         }}
       />
-      <div className='absolute right-1 bottom-1 flex gap-3'>
+      <div
+        className='flex items-center z-30 gap-3 bg-black border-t
+        border-slate-700 bg-opacity-50 p-3 w-full'
+      >
         <Toggle
           className='z-20'
           onChange={(checked) => {
             setDark(checked);
           }}
         />
-        <div className='z-20 flex gap-3'>
-          {bgImages.map((imgUrl, index) => (
-            <div
-              className='w-16 h-16 rounded-lg bg-gray-950 bg-[length:300px_300px]
-            border border-gray-200'
-              style={{
-                backgroundImage: `url(${imgUrl})`,
-              }}
-              onClick={() => setBgImageIndex(index)}
-            />
-          ))}
-          <div
-            className='w-16 h-16 rounded-lg bg-gray-950 bg-[length:300px_300px]
-            border border-gray-200'
-            onClick={() => setBgImageIndex(undefined)}
+        {bgImages.map((imgUrl, index) => (
+          <BackgroundPreview
+            backgroundUrl={imgUrl}
+            onClick={() => setBgImageIndex(index)}
+            key={imgUrl}
+            dark={dark}
           />
-        </div>
+        ))}
+        <BackgroundPreview
+          onClick={() => setBgImageIndex(undefined)}
+          dark={dark}
+        />
       </div>
     </div>
   );
