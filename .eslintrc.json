@@ -33,6 +33,7 @@
       "error",
       "prefer-single"
     ],
+    "react/require-default-props": "off",
     "max-len": [
       "error",
       {
