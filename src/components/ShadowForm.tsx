@@ -27,18 +27,17 @@ export function ShadowForm({ onChange }: Props) {
   };
 
   return (
-    <div className='flex flex-col justify-evenly divide-y divide-slate-700'>
+    <div className='flex flex-col divide-y justify-evenly divide-slate-700'>
       <label
-        className='flex flex-col justify-center p-3 grow'
+        className='flex items-center gap-3 p-3 grow'
         htmlFor='inset-input'
       >
-        <p>
+        <span>
           Inset:
-          {' '}
-          <code className='p-1 ml-2 font-mono rounded-sm w-15 bg-gray-950'>
-            {shadow.inset ? 'true' : 'false'}
-          </code>
-        </p>
+        </span>
+        <code className='p-1 ml-2 font-mono rounded-md w-15 bg-gray-950'>
+          {shadow.inset ? 'true' : 'false'}
+        </code>
         <Toggle
           onChange={() => {
             const newShadow = { ...shadow, inset: !shadow.inset };
@@ -48,7 +47,7 @@ export function ShadowForm({ onChange }: Props) {
         />
       </label>
       <label
-        className='flex flex-col justify-center p-3 grow'
+        className='flex flex-col justify-center gap-3 p-3 grow'
         htmlFor='x-offset-input'
       >
         <p>
@@ -59,7 +58,7 @@ export function ShadowForm({ onChange }: Props) {
             max={100}
             min={-100}
             value={shadow.offsetX}
-            className='px-1 ml-2 font-mono rounded-sm w-15 bg-gray-950'
+            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const newShadow = {
                 ...shadow,
@@ -81,7 +80,7 @@ export function ShadowForm({ onChange }: Props) {
         />
       </label>
       <label
-        className='flex flex-col justify-center p-3 grow'
+        className='flex flex-col justify-center gap-3 p-3 grow'
         htmlFor='y-offset-input'
       >
         <p>
@@ -91,7 +90,7 @@ export function ShadowForm({ onChange }: Props) {
             max={100}
             min={-100}
             value={shadow.offsetY}
-            className='px-1 ml-2 font-mono rounded-sm w-15 bg-gray-950'
+            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const newShadow = {
                 ...shadow,
@@ -113,7 +112,7 @@ export function ShadowForm({ onChange }: Props) {
         />
       </label>
       <label
-        className='flex flex-col justify-center p-3 grow'
+        className='flex flex-col justify-center gap-3 p-3 grow'
         htmlFor='blur-radius-input'
       >
         <p>
@@ -124,7 +123,7 @@ export function ShadowForm({ onChange }: Props) {
             max={100}
             min={0}
             value={shadow.blurRadius}
-            className='px-1 ml-2 font-mono rounded-sm w-15 bg-gray-950'
+            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const newShadow = {
                 ...shadow,
@@ -146,7 +145,7 @@ export function ShadowForm({ onChange }: Props) {
         />
       </label>
       <label
-        className='flex flex-col justify-center p-3 grow'
+        className='flex flex-col justify-center gap-3 p-3 grow'
         htmlFor='spread-radius-input'
       >
         <p>
@@ -157,7 +156,7 @@ export function ShadowForm({ onChange }: Props) {
             max={100}
             min={-100}
             value={shadow.spreadRadius}
-            className='px-1 ml-2 font-mono rounded-sm w-15 bg-gray-950'
+            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const newShadow = {
                 ...shadow,
@@ -179,20 +178,22 @@ export function ShadowForm({ onChange }: Props) {
         />
       </label>
       <label
-        className='flex flex-col justify-center p-3 grow'
+        className='flex justify-center gap-3 p-3 grow'
         htmlFor='color-input'
       >
         <p>
           Shadow Color:
           {' '}
-          <code className='p-1 ml-2 font-mono rounded-sm w-15 bg-gray-950'>{color}</code>
+          <code className='p-1 ml-2 font-mono rounded-md w-15 bg-gray-950'>
+            {color}
+          </code>
         </p>
         <input
           id='color-input'
           name='color'
           type='color'
           value={color}
-          className='rounded-sm bg-gray-950'
+          className='rounded-md bg-gray-950'
           onChange={(e) => {
             const newColor = e.target.value;
             const newShadow = {
@@ -206,7 +207,7 @@ export function ShadowForm({ onChange }: Props) {
         />
       </label>
       <label
-        className='flex flex-col justify-center p-3 grow'
+        className='flex flex-col justify-center gap-3 p-3 grow'
         htmlFor='color-opacity-input'
       >
         <p>
@@ -217,7 +218,7 @@ export function ShadowForm({ onChange }: Props) {
             max={100}
             min={-100}
             value={colorOpacity}
-            className='px-1 ml-2 font-mono rounded-sm w-15 bg-gray-950'
+            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
             onChange={(e) => {
               const opacity = parseInt(e.target.value, 10);
               const newShadow = {

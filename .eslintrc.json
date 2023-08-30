@@ -35,9 +35,10 @@
     ],
     "react/require-default-props": "off",
     "max-len": [
-      "error",
+      "warn",
       {
         "code": 100,
+        
         "ignoreTemplateLiterals": true
       }
     ]
