@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { type ShadowProps } from '../types';
 import { hexToRbga } from '../utils/color';
 import { Toggle } from './Toggle';
+import { Slider } from './Slider';
 
 type Props = {
   onChange: (shadow: ShadowProps) => void;
@@ -27,15 +28,15 @@ export function ShadowForm({ onChange }: Props) {
   };
 
   return (
-    <div className='flex flex-col divide-y justify-evenly divide-slate-700'>
+    <form className='flex flex-col divide-y justify-evenly divide-slate-700'>
       <label
         className='flex items-center gap-3 p-3 grow'
-        htmlFor='inset-input'
+        htmlFor='shadow-inset-input'
       >
         <span>
           Inset:
         </span>
-        <code className='p-1 ml-2 font-mono rounded-md w-15 bg-gray-950'>
+        <code className='p-1 ml-2 font-mono rounded-md grow-0 shrink-0 basis-14 bg-gray-950'>
           {shadow.inset ? 'true' : 'false'}
         </code>
         <Toggle
@@ -47,139 +48,8 @@ export function ShadowForm({ onChange }: Props) {
         />
       </label>
       <label
-        className='flex flex-col justify-center gap-3 p-3 grow'
-        htmlFor='x-offset-input'
-      >
-        <p>
-          Offset X:
-          {' '}
-          <input
-            type='number'
-            max={100}
-            min={-100}
-            value={shadow.offsetX}
-            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const newShadow = {
-                ...shadow,
-                offsetX: Number(e.target.value),
-              };
-              onChange(newShadow);
-              setShadow(newShadow);
-            }}
-          />
-        </p>
-        <input
-          id='x-offset-input'
-          name='offsetX'
-          type='range'
-          min='-100'
-          max='100'
-          value={shadow.offsetX}
-          onChange={handleChange}
-        />
-      </label>
-      <label
-        className='flex flex-col justify-center gap-3 p-3 grow'
-        htmlFor='y-offset-input'
-      >
-        <p>
-          Offset Y:
-          <input
-            type='number'
-            max={100}
-            min={-100}
-            value={shadow.offsetY}
-            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const newShadow = {
-                ...shadow,
-                offsetY: Number(e.target.value),
-              };
-              onChange(newShadow);
-              setShadow(newShadow);
-            }}
-          />
-        </p>
-        <input
-          id='y-offset-input'
-          name='offsetY'
-          type='range'
-          min='-100'
-          max='100'
-          value={shadow.offsetY}
-          onChange={handleChange}
-        />
-      </label>
-      <label
-        className='flex flex-col justify-center gap-3 p-3 grow'
-        htmlFor='blur-radius-input'
-      >
-        <p>
-          Blur Radius:
-          {' '}
-          <input
-            type='number'
-            max={100}
-            min={0}
-            value={shadow.blurRadius}
-            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const newShadow = {
-                ...shadow,
-                blurRadius: Number(e.target.value),
-              };
-              onChange(newShadow);
-              setShadow(newShadow);
-            }}
-          />
-        </p>
-        <input
-          id='blur-radius-input'
-          name='blurRadius'
-          type='range'
-          min='0'
-          max='100'
-          value={shadow.blurRadius}
-          onChange={handleChange}
-        />
-      </label>
-      <label
-        className='flex flex-col justify-center gap-3 p-3 grow'
-        htmlFor='spread-radius-input'
-      >
-        <p>
-          Spread Radius:
-          {' '}
-          <input
-            type='number'
-            max={100}
-            min={-100}
-            value={shadow.spreadRadius}
-            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const newShadow = {
-                ...shadow,
-                spreadRadius: Number(e.target.value),
-              };
-              onChange(newShadow);
-              setShadow(newShadow);
-            }}
-          />
-        </p>
-        <input
-          id='spread-radius-input'
-          name='spreadRadius'
-          type='range'
-          min='-100'
-          max='100'
-          value={shadow.spreadRadius}
-          onChange={handleChange}
-        />
-      </label>
-      <label
-        className='flex justify-center gap-3 p-3 grow'
-        htmlFor='color-input'
+        className='flex gap-3 p-3 grow'
+        htmlFor='shadow-color-input'
       >
         <p>
           Shadow Color:
@@ -189,7 +59,7 @@ export function ShadowForm({ onChange }: Props) {
           </code>
         </p>
         <input
-          id='color-input'
+          id='shadow-color-input'
           name='color'
           type='color'
           value={color}
@@ -208,7 +78,7 @@ export function ShadowForm({ onChange }: Props) {
       </label>
       <label
         className='flex flex-col justify-center gap-3 p-3 grow'
-        htmlFor='color-opacity-input'
+        htmlFor='shadow-color-opacity-input'
       >
         <p>
           Color Opacity:
@@ -231,10 +101,9 @@ export function ShadowForm({ onChange }: Props) {
             }}
           />
         </p>
-        <input
-          id='color-opacity-input'
+        <Slider
+          id='shadow-color-opacity-input'
           name='colorOpacity'
-          type='range'
           min='0'
           max='100'
           value={colorOpacity}
@@ -250,6 +119,133 @@ export function ShadowForm({ onChange }: Props) {
           }}
         />
       </label>
-    </div>
+      <label
+        className='flex flex-col justify-center gap-3 p-3 grow'
+        htmlFor='shadow-x-offset-input'
+      >
+        <p>
+          Offset X:
+          {' '}
+          <input
+            type='number'
+            max={100}
+            min={-100}
+            value={shadow.offsetX}
+            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950 accent-blue-600'
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const newShadow = {
+                ...shadow,
+                offsetX: Number(e.target.value),
+              };
+              onChange(newShadow);
+              setShadow(newShadow);
+            }}
+          />
+        </p>
+        <Slider
+          id='shadow-x-offset-input'
+          name='offsetX'
+          min='-100'
+          max='100'
+          value={shadow.offsetX}
+          onChange={handleChange}
+        />
+      </label>
+      <label
+        className='flex flex-col justify-center gap-3 p-3 grow'
+        htmlFor='shadow-y-offset-input'
+      >
+        <p>
+          Offset Y:
+          <input
+            type='number'
+            max={100}
+            min={-100}
+            value={shadow.offsetY}
+            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const newShadow = {
+                ...shadow,
+                offsetY: Number(e.target.value),
+              };
+              onChange(newShadow);
+              setShadow(newShadow);
+            }}
+          />
+        </p>
+        <Slider
+          id='shadow-y-offset-input'
+          name='offsetY'
+          min='-100'
+          max='100'
+          value={shadow.offsetY}
+          onChange={handleChange}
+        />
+      </label>
+      <label
+        className='flex flex-col justify-center gap-3 p-3 grow'
+        htmlFor='shadow-blur-radius-input'
+      >
+        <p>
+          Blur Radius:
+          {' '}
+          <input
+            type='number'
+            max={100}
+            min={0}
+            value={shadow.blurRadius}
+            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const newShadow = {
+                ...shadow,
+                blurRadius: Number(e.target.value),
+              };
+              onChange(newShadow);
+              setShadow(newShadow);
+            }}
+          />
+        </p>
+        <Slider
+          id='shadow-blur-radius-input'
+          name='blurRadius'
+          min='0'
+          max='100'
+          value={shadow.blurRadius}
+          onChange={handleChange}
+        />
+      </label>
+      <label
+        className='flex flex-col justify-center gap-3 p-3 grow'
+        htmlFor='shadow-spread-radius-input'
+      >
+        <p>
+          Spread Radius:
+          {' '}
+          <input
+            type='number'
+            max={100}
+            min={-100}
+            value={shadow.spreadRadius}
+            className='px-1 ml-2 font-mono rounded-md w-15 bg-gray-950'
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const newShadow = {
+                ...shadow,
+                spreadRadius: Number(e.target.value),
+              };
+              onChange(newShadow);
+              setShadow(newShadow);
+            }}
+          />
+        </p>
+        <Slider
+          id='shadow-spread-radius-input'
+          name='spreadRadius'
+          min='-100'
+          max='100'
+          value={shadow.spreadRadius}
+          onChange={handleChange}
+        />
+      </label>
+    </form>
   );
 }

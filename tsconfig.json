@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", ".eslintrc.cjs", "tailwind.config.js", "postcss.config.js"],
+  "include": ["src", ".eslintrc.cjs", "tailwind.config.js", "postcss.config.js", "src/components/ShadowGenerator.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
