@@ -112,11 +112,15 @@ export default function GradientForm({ onChange }: Props) {
     },
   });
   return (
-    <form className='flex flex-col divide-y justify-evenly divide-slate-700 [&>div]:p-3 [&>label]:p-3'>
+    <form
+      className='flex flex-col divide-y justify-evenly divide-slate-700 [&>div]:p-3
+      [&>label]:p-3'
+    >
       <h2 className='py-1 text-lg font-bold text-center bg-gray-950'>Orientation </h2>
       <div className='flex justify-center gap-3 grow'>
         <button
-          className='flex items-center h-full gap-2 px-2 py-1 rounded-md bg-gray-950 ring-2 ring-slate-700 justify-evenly'
+          className='flex items-center h-full gap-2 px-2 py-1 rounded-md bg-gray-950 ring-2
+          ring-slate-700 justify-evenly'
           type='button'
           onClick={() => dispatch({ type: Actions.TURN_LEFT, payload: null })}
         >
@@ -124,7 +128,8 @@ export default function GradientForm({ onChange }: Props) {
           Rotate Left
         </button>
         <button
-          className='flex items-center h-full gap-2 px-2 py-1 rounded-md bg-gray-950 ring-2 ring-slate-700 justify-evenly'
+          className='flex items-center h-full gap-2 px-2 py-1 rounded-md bg-gray-950 ring-2
+          ring-slate-700 justify-evenly'
           type='button'
           onClick={() => dispatch({ type: Actions.TURN_RIGHT, payload: null })}
         >

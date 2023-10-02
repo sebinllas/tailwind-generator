@@ -36,7 +36,10 @@ export function Board({ children, backgroundImagesUrl, darkInitial = false }: Pr
           }}
         />
       </div>
-      <div className='z-30 flex items-center justify-center w-full gap-3 p-3 bg-opacity-50 border-y border-slate-700'>
+      <div
+        className='z-30 flex items-center justify-center w-full gap-3 p-3 bg-opacity-50 border-y
+        border-slate-700'
+      >
         {bgImages.map((imgUrl, index) => (
           <BackgroundPreview
             backgroundUrl={imgUrl}
@@ -49,7 +52,9 @@ export function Board({ children, backgroundImagesUrl, darkInitial = false }: Pr
           onClick={() => setBgImageIndex(undefined)}
           dark={dark}
         />
-        <div className='flex items-center h-full gap-2 px-2 py-1 rounded-md bg-gray-950 ring-2 ring-slate-700'>
+        <div className='flex items-center h-full gap-2 px-2 py-1 rounded-md bg-gray-950 ring-2
+          ring-slate-700'
+        >
           <span className='text-xs font-light text-slate-300'>
             Dark background
           </span>

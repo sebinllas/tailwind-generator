@@ -46,7 +46,7 @@ export function GradientBgGenerator() {
       <main className='flex flex-col border-l border-r border-slate-700 grow basis-96'>
         <Board
           darkInitial
-          backgroundImagesUrl={['src/assets/grid.svg', 'src/assets/dots.svg']}
+          backgroundImagesUrl={['/assets/grid.svg', '/assets/dots.svg']}
         >
           <div
             className='w-72 h-72 bg-slate-500 rounded-2xl'

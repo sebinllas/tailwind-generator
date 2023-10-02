@@ -21,7 +21,7 @@ export function ShadowGenerator() {
     <ToolLayout
       preview={(
         <Board
-          backgroundImagesUrl={['src/assets/grid.svg', 'src/assets/dots.svg']}
+          backgroundImagesUrl={['/assets/grid.svg', '/assets/dots.svg']}
         >
           <div
             ref={elementRef}
