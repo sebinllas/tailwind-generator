@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 import { type ShadowProps } from '../types';
-import { ShadowForm } from './ShadowForm';
+import { ShadowForm } from '../components/ShadowForm';
 import { hexToRbga } from '../utils/color';
-import { Board } from './Board';
-import { ElementForm } from './ElementForm';
-import { ToolLayout } from './ToolLayout';
+import { Board } from '../components/Board';
+import { ElementForm } from '../components/ElementForm';
+import { ToolLayout } from '../components/ToolLayout';
 
 export function ShadowGenerator() {
   const elementRef = useRef<HTMLDivElement>(null);

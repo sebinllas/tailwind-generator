@@ -5,10 +5,11 @@ import { BackgroundPreview } from './BackgroundPreview';
 type Props = {
   children: ReactNode;
   backgroundImagesUrl: string[];
+  darkInitial?: boolean;
 };
 
-export function Board({ children, backgroundImagesUrl }: Props) {
-  const [dark, setDark] = useState(false);
+export function Board({ children, backgroundImagesUrl, darkInitial = false }: Props) {
+  const [dark, setDark] = useState(darkInitial);
   const [bgImageIndex, setBgImageIndex] = useState<number>();
   const bgImages = backgroundImagesUrl;
   return (
@@ -53,6 +54,7 @@ export function Board({ children, backgroundImagesUrl }: Props) {
             Dark background
           </span>
           <Toggle
+            value={dark}
             className='z-20'
             onChange={(checked) => {
               setDark(checked);

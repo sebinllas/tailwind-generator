@@ -1,7 +1,7 @@
-import React, { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 
 export function Slider({
-  id, name, onChange, min, max, value, className,
+  id, name, onChange, min, max, value, disabled, className,
 }: InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
@@ -14,7 +14,7 @@ export function Slider({
         ring-[1px]
 
         [&::-webkit-slider-thumb]:appearance-none
-        [&::-webkit-slider-thumb]:bg-black/25
+        [&::-webkit-slider-thumb]:bg-black
         [&::-webkit-slider-thumb]:ring
         [&::-webkit-slider-thumb]:ring-white
         [&::-webkit-slider-thumb]:relative
@@ -36,6 +36,7 @@ export function Slider({
       max={max}
       value={value}
       onChange={onChange}
+      disabled={disabled}
     />
   );
 }

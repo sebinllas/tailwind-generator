@@ -5,11 +5,15 @@ import { useState } from 'react';
 
 type Props = {
   onChange: (checked: boolean) => void;
+  value?: boolean;
   className?: string;
+  id?: string;
 };
 
-export function Toggle({ onChange, className = '' }: Props) {
-  const [checked, setChecked] = useState<boolean>(false);
+export function Toggle({
+  onChange, className = '', id, value,
+}: Props) {
+  const [checked, setChecked] = useState<boolean>(value || false);
 
   const handleChange = () => {
     onChange(!checked);
@@ -23,6 +27,7 @@ export function Toggle({ onChange, className = '' }: Props) {
         checked={checked}
         className='sr-only peer'
         readOnly
+        id={id}
       />
       <div
         onClick={handleChange}

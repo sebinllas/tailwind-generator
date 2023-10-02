@@ -1,7 +1,7 @@
 import { Route } from 'wouter';
 import './App.css';
-import { ShadowGenerator } from './components/ShadowGenerator';
-import { GradientBgGenerator } from './components/GradientBgGenerator';
+import { ShadowGenerator } from './pages/ShadowGenerator';
+import { GradientBgGenerator } from './pages/GradientBgGenerator';
 
 export default function App() {
   return (
